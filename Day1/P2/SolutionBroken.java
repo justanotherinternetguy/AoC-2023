@@ -5,7 +5,7 @@ import java.util.*;
 public class SolutionBroken {
     public final static String fm = "final";
     public final static int LINES = 1000;
-    public static final Map<String, Integer> nn = new HashMap<String, Integer>() {{
+    public static final Map<String, Integer> nn = new HashMap<String, Integer>() {{ // CHATGPT
         put("zero", 0);
         put("one", 1);
         put("two", 2);
