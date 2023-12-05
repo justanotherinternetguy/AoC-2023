@@ -35,8 +35,8 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        String inputFilePath = "final.in";
-        try (BufferedReader br = new BufferedReader(new FileReader(inputFilePath))) {
+        String fm = "final.in";
+        try (BufferedReader br = new BufferedReader(new FileReader(fm))) {
             String line;
             StringBuilder content = new StringBuilder();
             while ((line = br.readLine()) != null) {
