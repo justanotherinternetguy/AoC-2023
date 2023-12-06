@@ -3,66 +3,57 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Solution {
-    public final static String fm = "test";
-    public final static int LINES = 5;
+    public final static String fm = "final";
     public final static int RED_MAX = 12;
     public final static int BLUE_MAX = 13;
     public final static int GREEN_MAX = 14;
-
-    public static void check(String str) {
-        String[] rounds = str.split("; ");
-        for (String sub : rounds) {
-            int r = 0; int g = 0; int b = 0;
-            // System.out.println(sub);
-            List<String> tokens = Arrays.asList(sub.split("\\s*;\\s*"));
-            // for (String s : tokens) {
-            //     System.out.println(s);
-            // }
-            
-            for (int i = 0; i < tokens.size(); i++) {
-                List<String> each = Arrays.asList(tokens.get(i).split("\\s*,\\s*"));
-                for (int j = 0; j < each.size(); j++) {
-                    r = 0; g = 0; b = 0;
-                    System.out.println(r + " " + g + " " + b);
-
-                    // TODO
-                }
-            }
-        }
-    }
 
     public static void main(String[] args) throws IOException {
         BufferedReader r = new BufferedReader(new FileReader(fm + ".in"));
         PrintWriter pw = new PrintWriter(System.out);
         StringTokenizer st = new StringTokenizer(r.readLine());
+        int sum = 0;
 
-        // read everything into array
-        List<String> inArr = new ArrayList<>();
-        String line;
-        while ((line = r.readLine()) != null) {
-            inArr.add(line);
+
+        List<String> lines = r.lines().collect(Collectors.toList());
+        for (String l : lines) {
+            System.out.println(l);
         }
+        // for (String line : lines) {
+        for (int a = 0; a < lines.size(); a++) {
+            String line = lines.get(a);
+            String[] tokens = line.split(":");
+            // int ID = Integer.parseInt(tokens[0].substring(5));
+            String[] colorTokens = tokens[1].split("; ");
+            boolean bad = false;
+            for (String ct : colorTokens) {
+                String[] colorVals = ct.split(", ");
+                for (int i = 0; i < colorVals.length; i++) {
+                    colorVals[i] = colorVals[i].trim(); // cleanup
+                }
+                for (String cv : colorVals) {
+                    int n = Integer.parseInt(cv.split(" ")[0]);
+                    if (cv.contains("blue") && n > BLUE_MAX) {
+                        // System.out.println("blue wrong: " + cv + "ID: " + (a+1));
+                        bad = true;
+                    }
+                    if (cv.contains("red") && n > RED_MAX) {
+                        // System.out.println("red wrong: " + cv + "ID: " + (a+1));
+                        bad = true;
 
-        // ID RGB, RGB, RGB
-        // remove "Game"
-        for (int i = 0; i < inArr.size(); i++) {
-            inArr.set(i, inArr.get(i).substring(8)); // IDs implied
+                    }
+                    if (cv.contains("green") && n > GREEN_MAX) {
+                        // System.out.println("red wrong: " + cv + "ID: " + (a+1));
+                        bad = true;
+                    }
+                }
+            }
+            if (!bad) {
+                sum += (a+1);
+            }
         }
-
-    
-        // OTHER METHOD (same)
-                // inArr = inArr.stream()
-                // .map(s -> s.startsWith("Game") ? s.substring(4) : s)
-                // .collect(Collectors.toList());
-
-        for (int i = 0; i  < inArr.size(); i++) {
-            System.out.println(inArr.get(i));
-        }
-        System.out.println();
-        // for (int i = 0; i  < inArr.size(); i++) {
-        //     System.out.println(check(inArr.get(i)));
-        // }
-        check(inArr.get(2));
+        pw.println(sum);
         pw.close();
+        r.close();
     }
 }
