@@ -3,8 +3,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Solution {
-    public final static String fm = "final";
-    public final static String INS = "LLRLRRLLRLRRLLRLRRLRRRLRLRLRRRLLRLRRRLRLRRRLRLRLLLRRLRLRLLRLRRLRRRLRRRLLRRLRLRRRLRRLRRRLRLLRRLRRRLRRRLRRLRLRRLLLRLRLLRRRLRRLLRLRLRRLLRLRRLLRLRRLRRLLRRRLRLRLRRRLLRRRLRRLRRRLRRRLRLRRRLRRLLLRRRLRLLLRRRLRLLRLLRRRLLRRLRRRLRRRLRLLRLRLRRRLLRRLRRRLRRLRLLRRRLRRLRRRLRRRLRRRLRLRRRLRRRLRLRRRR";
+    public final static String fm = "test";
+    public final static String INS = "LLR";
     public final static String START = "AAA";
     public final static String END = "ZZZ";
 
